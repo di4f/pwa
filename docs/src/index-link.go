@@ -3,7 +3,7 @@ package main
 import (
 	"strings"
 
-	"github.com/maxence-charriere/go-app/v9/pkg/app"
+	"github.com/omnipunk/pwa/v9/app"
 )
 
 type indexLink struct {

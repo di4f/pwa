@@ -26,7 +26,7 @@ The server is what serves the files to make a go-app progressive web app work in
 - [app.wasm](#app-wasm)
 - [Static resources](#static-resources)
 
-It is implemented with the standard [Go HTTP package](https://golang.org/pkg/net/http) and the [Handler](/reference#Handler).
+It is implemented with the standard [Go HTTP package](https://golang.org/net/http) and the [Handler](/reference#Handler).
 
 ## HTML pages
 

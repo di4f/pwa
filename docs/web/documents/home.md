@@ -35,7 +35,7 @@ func (h *hello) Render() app.UI {
 
 ## Standard HTTP Server
 
-Serving an app built with go-app is done by using the [Go standard HTTP model](https://golang.org/pkg/net/http).
+Serving an app built with go-app is done by using the [Go standard HTTP model](https://golang.org/net/http).
 
 ```go
 func main() {

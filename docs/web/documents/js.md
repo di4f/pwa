@@ -2,7 +2,7 @@
 
 Since WebAssembly is browser-based technology, some scenarios may require DOM access and JavaScript calls.
 
-This is usually done with the help of [syscall/js](https://golang.org/pkg/syscall/js/) but for compatibility and tooling reasons, **go-app wraps the JS standard package**. Interacting with JavaScript is done by using the [Value](/reference#Value) interface.
+This is usually done with the help of [syscall/js](https://golang.org/syscall/js/) but for compatibility and tooling reasons, **go-app wraps the JS standard package**. Interacting with JavaScript is done by using the [Value](/reference#Value) interface.
 
 This article provides examples that show common interactions with JavaScript.
 

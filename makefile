@@ -12,7 +12,7 @@ test:
 	@echo "\033[94m\n• Running Go tests\033[00m"
 	go test -race ./...
 	@echo "\033[94m\n• Running go wasm tests\033[00m"
-	GOARCH=wasm GOOS=js go test ./pkg/app
+	GOARCH=wasm GOOS=js go test ./app
 
 release:
 ifdef VERSION
@@ -28,11 +28,11 @@ endif
 	
 gen:
 	@echo "\033[94m• Generating HTML Syntax\033[00m"
-	@go generate ./pkg/app
+	@go generate ./app
 
 build:
 	@echo "\033[94m• Building go-app documentation PWA\033[00m"
-	@godoc -url /pkg/github.com/maxence-charriere/go-app/v9/pkg/app > ./docs/web/documents/reference.html
+	@godoc -url /github.com/maxence-charriere/go-app/v9/app > ./docs/web/documents/reference.html
 	@GOARCH=wasm GOOS=js go build -v -o docs/web/app.wasm ./docs/src
 	@echo "\033[94m• Building go-app documentation\033[00m"
 	@go build -o docs/documentation ./docs/src

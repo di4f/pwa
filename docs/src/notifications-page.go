@@ -7,9 +7,9 @@ import (
 	"math/rand"
 	"net/http"
 
-	"github.com/maxence-charriere/go-app/v9/pkg/analytics"
-	"github.com/maxence-charriere/go-app/v9/pkg/app"
-	"github.com/maxence-charriere/go-app/v9/pkg/errors"
+	"github.com/omnipunk/pwa/v9/analytics"
+	"github.com/omnipunk/pwa/v9/app"
+	"github.com/omnipunk/pwa/v9/errors"
 )
 
 type notificationsPage struct {

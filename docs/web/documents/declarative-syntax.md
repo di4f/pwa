@@ -135,7 +135,7 @@ func (c *myCompo) onClick(ctx app.Context, e app.Event) {
 }
 ```
 
-The [Context](/reference#Context) argument embeds several go-app tools that help in creating responsive UIs. Usable with any function accepting a [Go standard context](https://golang.org/pkg/context/#Context), it is canceled when the source of the event is dismounted. The source element value can be retrieved with the JSSrc field:
+The [Context](/reference#Context) argument embeds several go-app tools that help in creating responsive UIs. Usable with any function accepting a [Go standard context](https://golang.org/context/#Context), it is canceled when the source of the event is dismounted. The source element value can be retrieved with the JSSrc field:
 
 ```go
 func (c *myCompo) Render() app.UI {

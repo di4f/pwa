@@ -5,6 +5,7 @@
 *.so
 *.dylib
 *.app
+*.wasm
 /docs/documentation
 
 # Test binary, build with `go test -c`

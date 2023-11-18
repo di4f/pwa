@@ -10,7 +10,7 @@ Replace `v7` imports by `v8`.
 
 ```go
 import (
-	"github.com/maxence-charriere/go-app/v9/pkg/app"
+	"github.com/maxence-charriere/go-app/v9/app"
 )
 ```
 
@@ -25,7 +25,7 @@ Here is how it is done for the hello example:
 
 package main
 
-import "github.com/maxence-charriere/go-app/v7/pkg/app"
+import "github.com/maxence-charriere/go-app/v7/app"
 
 func main() {
 	app.Route("/", &hello{})
@@ -45,7 +45,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/maxence-charriere/go-app/v7/pkg/app"
+	"github.com/maxence-charriere/go-app/v7/app"
 )
 
 func main() {
@@ -70,7 +70,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/maxence-charriere/go-app/v9/pkg/app"
+	"github.com/maxence-charriere/go-app/v9/app"
 )
 
 func main() {
@@ -110,7 +110,7 @@ Furthermore, `Route()` and `RouteWithRegexp()` calls now only register the type 
 | `func Dispatch(fn func())`                       | - [`func (ctx Context) Dispatch(fn func())`](/reference#Context.Dispatch)()<br> - [`func (c *Compo) Defer(fn func(Context))`](/reference#Compo.Defer)           | Executing a function on the UI goroutine is now done from a [Context](/reference#Context) or a [Component](http://localhost:7777/reference#Composer).                                                                                                                                                                        |
 | `func StaticResource(path string) string`        | [`func (ctx Context) ResolveStaticResource(path string) string`](/reference#Context.ResolveStaticResource)                                                      | Resolving a [static resource](/static-resources) is now a [Context](/reference#Context) method.                                                                                                                                                                                                                              |
 | `func NewContextMenu(menuItems ...MenuItemNode)` | **Removed**                                                                                                                                                     | Context menus have been removed. This may come back eventually under another form.                                                                                                                                                                                                                                           |
-| `func Log(format string, v ...interface{})`      | [`func Logf(format string, v ...interface{})`](/reference#Logf)                                                                                                 | `Log()` has been renamed `Logf()` to match the [fmt](https://golang.org/pkg/fmt/) package. The new [`Log()`](/reference#Log) function now have a similar behavior as `fmt.Println()`.                                                                                                                                        |
+| `func Log(format string, v ...interface{})`      | [`func Logf(format string, v ...interface{})`](/reference#Logf)                                                                                                 | `Log()` has been renamed `Logf()` to match the [fmt](https://golang.org/fmt/) package. The new [`Log()`](/reference#Log) function now have a similar behavior as `fmt.Println()`.                                                                                                                                        |
 
 ## Component interfaces
 
