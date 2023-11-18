@@ -4,61 +4,60 @@ package ui
 // through StringValuers.
 
 import (
-	"github.com/omnipunk/pwa/v9/v9/app"
+	"github.com/omnipunk/pwa/v9/app"
 	"strings"
 	"log"
 )
 
-type PathValuer interface {
-	SetPath(string)
-	GetPath() string
-}
-
 // INav is the interface that describes navigational
 // component.
 type INav interface {
+	app.UI
 	Parent(INav) INav
-	Show() INav
+	Show(bool) INav
+	Define(string, app.UI) INav
+	Default(string) INav
+	Valuer(Valuer[string]) INav
+	Class(string) INav
+
+	GetParent() INav
+	SetValue(app.Context, string) error
+	GetValue(app.Context) string
+	Path() string
+	NumParent() int
 }
 
 type uiMap map[string] app.UI
 type navCompo struct {
 	app.Compo
 	class string
-	parent *NavCompo
+	parent *navCompo
 	show bool
 	compos uiMap
 	errCompo app.UI
 	value string
 	def string
-	valuer inputx.Valuer[string]
+	valuer Valuer[string]
 	path string
 }
 
 func Nav() INav {
-	return &NavCompo{
+	return &navCompo{
 		show: true,
 	}
 }
 
 func (n *navCompo) Parent(
-	parent *NavCompo,
-) *NavCompo {
-	n.parent = parent
+	parent INav,
+) INav {
+	n.parent = parent.(*navCompo)
 	return n
 }
 
 func (n *navCompo) Show(
 	show bool,
-) *NavCompo {
+) INav {
 	n.show = show
-	return n
-}
-
-func (n *navCompo) (
-	valuer inputx.Valuer[string],
-) *NavCompo {
-	n.valuer = valuer
 	return n
 }
 
@@ -68,7 +67,7 @@ func (n *navCompo) OnMount(c app.Context) {
 		pth = app.Window().URL().Path
 		n.path = pth
 	} else {
-		pth = n.parent.path
+		pth = n.parent.Path()
 	}
 
 	values := PathValues(pth)
@@ -82,7 +81,7 @@ func (n *navCompo) OnMount(c app.Context) {
 	if val == "" {
 		_, ok := n.compos[val]
 		if !ok {
-			n.SetPath(c, n.def)
+			n.SetValue(c, n.def)
 		}
 	} else {
 		n.SetValue(c, val)
@@ -115,6 +114,10 @@ func (n *navCompo) Render() app.UI {
 	}
 
 	return compo
+}
+
+func (n *navCompo) GetParent() INav {
+	return n.parent
 }
 
 func (n *navCompo) Path() string {
@@ -159,12 +162,12 @@ func (n *navCompo) NumParent() int {
 	for {
 		n = n.parent
 		if n == nil {
-			return i
+			break
 		}
 		i++
 	}
 
-	return -1
+	return i
 }
 
 func (n *navCompo) SetValue(
@@ -188,6 +191,11 @@ func (n *navCompo) GetValue(
 	c app.Context,
 ) string {
 	return n.value
+}
+
+func (n *navCompo) Valuer(valuer Valuer[string]) INav {
+	n.valuer = valuer
+	return n
 }
 
 func (n *navCompo) Define(
