@@ -9,63 +9,42 @@ import (
 	"log"
 )
 
-// INav is the interface that describes navigational
-// component.
-type INav interface {
-	app.UI
-	Parent(INav) INav
-	Show(bool) INav
-	Define(string, app.UI) INav
-	Default(string) INav
-	Valuer(Valuer[string]) INav
-	Class(string) INav
-
-	GetParent() INav
-	SetValue(app.Context, string) error
-	GetValue(app.Context) string
-	Path() string
-	NumParent() int
-}
-
 type uiMap map[string] app.UI
-type navCompo struct {
+type NavCompo struct {
 	app.Compo
 	class string
-	parent *navCompo
+	parent *NavCompo
 	show bool
 	compos uiMap
 	errCompo app.UI
 	value string
 	def string
 	valuer Valuer[string]
-	path string
 }
 
-func Nav() INav {
-	return &navCompo{
+func Nav(parent *NavCompo) *NavCompo {
+	return &NavCompo{
 		show: true,
+		parent: parent,
 	}
 }
 
-func (n *navCompo) Parent(
-	parent INav,
-) INav {
-	n.parent = parent.(*navCompo)
-	return n
+func (n *NavCompo) Parent() *NavCompo {
+	return n.parent
 }
 
-func (n *navCompo) Show(
+func (n *NavCompo) Show(
 	show bool,
-) INav {
+) *NavCompo {
 	n.show = show
 	return n
 }
 
-func (n *navCompo) OnMount(c app.Context) {
+func (n *NavCompo) OnMount(c app.Context) {
+	log.Println("mounting")
 	var pth string
 	if n.parent == nil {
 		pth = app.Window().URL().Path
-		n.path = pth
 	} else {
 		pth = n.parent.Path()
 	}
@@ -86,19 +65,14 @@ func (n *navCompo) OnMount(c app.Context) {
 	} else {
 		n.SetValue(c, val)
 	}
+
 	if n.valuer != nil {
 		n.valuer.SetValue(c, n.GetValue(c))
 	}
 }
 
-func (n *navCompo) Render() app.UI {
-	if !n.Mounted() {
-		return app.Text("")
-	}
-	if n.parent == nil {
-		n.path = app.Window().URL().Path
-	}
-
+func (n *NavCompo) Render() app.UI {
+	log.Println("rendering")
 	// The thing is made to interact
 	// with other components so
 	// you do not have to use the compo
@@ -107,24 +81,20 @@ func (n *navCompo) Render() app.UI {
 		return app.Text("")
 	}
 
-	compo, ok := n.compos[n.value]
+	value := n.GetValue(nil)
+	compo, ok := n.compos[value]
 	if !ok {
-		log.Printf("%q: the path is not registered", n.value)
+		log.Printf("%q: the path is not registered", value)
 		return app.Text("")
 	}
 
 	return compo
 }
 
-func (n *navCompo) GetParent() INav {
-	return n.parent
-}
-
-func (n *navCompo) Path() string {
+func (n *NavCompo) Path() string {
 	if n == nil {
 		return "/"
 	}
-
 	
 	if n.value == "" {
 		return n.parent.Path()
@@ -148,12 +118,12 @@ func PathValues(path string) []string {
 		ret = append(ret, v)
 	}
 
-	ret = append(ret, "")
+	//ret = append(ret, "")
 
 	return ret
 }
 
-func (n *navCompo) NumParent() int {
+func (n *NavCompo) NumParent() int {
 	if n == nil {
 		return -1
 	}
@@ -170,7 +140,10 @@ func (n *navCompo) NumParent() int {
 	return i
 }
 
-func (n *navCompo) SetValue(
+func (n *NavCompo) OnUpdate(c app.Context) {
+}
+
+func (n *NavCompo) SetValue(
 	c app.Context,
 	value string,
 ) error {
@@ -187,21 +160,21 @@ func (n *navCompo) SetValue(
 	return nil
 }
 
-func (n *navCompo) GetValue(
+func (n *NavCompo) GetValue(
 	c app.Context,
 ) string {
 	return n.value
 }
 
-func (n *navCompo) Valuer(valuer Valuer[string]) INav {
+func (n *NavCompo) Valuer(valuer Valuer[string]) *NavCompo {
 	n.valuer = valuer
 	return n
 }
 
-func (n *navCompo) Define(
+func (n *NavCompo) Define(
 	name string,
 	ui app.UI,
-) INav {
+) *NavCompo {
 	if n.compos == nil {
 		n.compos = make(uiMap)
 	}
@@ -209,12 +182,12 @@ func (n *navCompo) Define(
 	return n
 }
 
-func (n *navCompo) Class(class string) INav {
+func (n *NavCompo) Class(class string) *NavCompo {
 	n.class = class
 	return n
 }
 
-func (n *navCompo) Default(def string) INav {
+func (n *NavCompo) Default(def string) *NavCompo {
 	n.def = def
 	return n
 }

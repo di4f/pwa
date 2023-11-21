@@ -78,7 +78,9 @@ func (b *RadioButtonCompo) Render() app.UI {
 		return btn
 	})
 
-	return ret
+	return app.Div().Body(
+		ret,
+	)
 }
 
 func RadioButton() *RadioButtonCompo {
