@@ -4,7 +4,7 @@ import (
 	"context"
 	"io"
 
-	"github.com/omnipunk/pwa/v9/errors"
+	"github.com/di4f/pwa/errors"
 )
 
 // Condition represents a control structure that displays nodes depending on a

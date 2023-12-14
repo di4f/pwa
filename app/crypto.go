@@ -6,7 +6,7 @@ import (
 	"crypto/rand"
 	"io"
 
-	"github.com/omnipunk/pwa/v9/errors"
+	"github.com/di4f/pwa/errors"
 )
 
 func encrypt(key string, v []byte) ([]byte, error) {

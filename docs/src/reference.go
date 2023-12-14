@@ -5,8 +5,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/omnipunk/pwa/v9/app"
-	"github.com/omnipunk/pwa/v9/errors"
+	"github.com/di4f/pwa/app"
+	"github.com/di4f/pwa/errors"
 	"golang.org/x/net/html"
 )
 

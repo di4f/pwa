@@ -3,7 +3,7 @@ package ui
 import (
 	"fmt"
 
-	"github.com/omnipunk/pwa/v9/app"
+	"github.com/di4f/pwa/app"
 )
 
 // ILink is the interface that describes a clickable link.

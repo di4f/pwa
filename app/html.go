@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"strconv"
 
-	"github.com/omnipunk/pwa/v9/errors"
+	"github.com/di4f/pwa/errors"
 )
 
 type htmlElement struct {

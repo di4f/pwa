@@ -3,7 +3,7 @@ package ui
 import (
 	"fmt"
 
-	"github.com/omnipunk/pwa/v9/app"
+	"github.com/di4f/pwa/app"
 )
 
 // IScroll is the interface that describes a base with a scrollable content

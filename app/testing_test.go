@@ -6,7 +6,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/omnipunk/pwa/v9/logs"
+	"github.com/di4f/pwa/logs"
 	"github.com/stretchr/testify/require"
 )
 

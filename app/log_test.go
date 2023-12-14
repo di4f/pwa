@@ -3,8 +3,8 @@ package app
 import (
 	"testing"
 
-	"github.com/omnipunk/pwa/v9/errors"
-	"github.com/omnipunk/pwa/v9/logs"
+	"github.com/di4f/pwa/errors"
+	"github.com/di4f/pwa/logs"
 )
 
 func TestLog(t *testing.T) {

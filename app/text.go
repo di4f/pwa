@@ -6,7 +6,7 @@ import (
 	"html"
 	"io"
 
-	"github.com/omnipunk/pwa/v9/errors"
+	"github.com/di4f/pwa/errors"
 )
 
 // Text creates a simple text element.

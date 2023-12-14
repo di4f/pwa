@@ -13,12 +13,12 @@ import (
 	"time"
 
 	"github.com/SherClockHolmes/webpush-go"
-	"github.com/omnipunk/pwa/v9/analytics"
-	"github.com/omnipunk/pwa/v9/app"
-	"github.com/omnipunk/pwa/v9/cli"
-	"github.com/omnipunk/pwa/v9/errors"
-	"github.com/omnipunk/pwa/v9/logs"
-	"github.com/omnipunk/pwa/v9/ui"
+	"github.com/di4f/pwa/analytics"
+	"github.com/di4f/pwa/app"
+	"github.com/di4f/pwa/cli"
+	"github.com/di4f/pwa/errors"
+	"github.com/di4f/pwa/logs"
+	"github.com/di4f/pwa/ui"
 )
 
 const (

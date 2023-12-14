@@ -1,6 +1,6 @@
 package ui
 
-import "github.com/omnipunk/pwa/v9/app"
+import "github.com/di4f/pwa/app"
 
 // IStack is the interface that describes a container that displays its items
 // as stacked panels.

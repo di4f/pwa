@@ -6,8 +6,8 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/omnipunk/pwa/v9/app"
-	"github.com/omnipunk/pwa/v9/logs"
+	"github.com/di4f/pwa/app"
+	"github.com/di4f/pwa/logs"
 )
 
 // IAdsenseDisplay is the interface that describes a responsive Adsense display

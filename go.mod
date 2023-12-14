@@ -1,4 +1,4 @@
-module github.com/omnipunk/pwa/v9
+module github.com/di4f/pwa
 
 go 1.18
 

@@ -4,27 +4,27 @@ package ui
 // through StringValuers.
 
 import (
-	"github.com/omnipunk/pwa/v9/app"
+	"github.com/di4f/pwa/app"
 	"strings"
 	"log"
 )
 
-type uiMap map[string] app.UI
+type uiMap map[string]app.UI
 type NavCompo struct {
 	app.Compo
-	class string
-	parent *NavCompo
-	show bool
-	compos uiMap
+	class    string
+	parent   *NavCompo
+	show     bool
+	compos   uiMap
 	errCompo app.UI
-	value string
-	def string
-	valuer Valuer[string]
+	value    string
+	def      string
+	valuer   Valuer[string]
 }
 
 func Nav(parent *NavCompo) *NavCompo {
 	return &NavCompo{
-		show: true,
+		show:   true,
 		parent: parent,
 	}
 }
@@ -95,7 +95,7 @@ func (n *NavCompo) Path() string {
 	if n == nil {
 		return "/"
 	}
-	
+
 	if n.value == "" {
 		return n.parent.Path()
 	}
@@ -191,4 +191,3 @@ func (n *NavCompo) Default(def string) *NavCompo {
 	n.def = def
 	return n
 }
-

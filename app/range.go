@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"sort"
 
-	"github.com/omnipunk/pwa/v9/errors"
+	"github.com/di4f/pwa/errors"
 )
 
 // RangeLoop represents a control structure that iterates within a slice, an

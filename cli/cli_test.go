@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/omnipunk/pwa/v9/errors"
+	"github.com/di4f/pwa/errors"
 	"github.com/stretchr/testify/require"
 )
 

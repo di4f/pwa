@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/omnipunk/pwa/v9/app"
+	"github.com/di4f/pwa/app"
 )
 
 const (

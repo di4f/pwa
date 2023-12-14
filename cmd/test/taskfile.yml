@@ -5,3 +5,7 @@ tasks:
     cmds:
       - go build
       - GOARCH=wasm GOOS=js go build -o web/app.wasm
+  clean:
+    cmds:
+      - go clean
+      - rm -f web/app.wasm

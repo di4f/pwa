@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/omnipunk/pwa/v9/app"
-	"github.com/omnipunk/pwa/v9/ui"
+	"github.com/di4f/pwa/app"
+	"github.com/di4f/pwa/ui"
 )
 
 const (

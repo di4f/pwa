@@ -5,7 +5,7 @@ package analytics
 import (
 	"fmt"
 
-	"github.com/omnipunk/pwa/v9/app"
+	"github.com/di4f/pwa/app"
 )
 
 // Backend is the interface that describes an analytics backend that sends

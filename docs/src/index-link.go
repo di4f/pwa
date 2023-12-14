@@ -3,7 +3,7 @@ package main
 import (
 	"strings"
 
-	"github.com/omnipunk/pwa/v9/app"
+	"github.com/di4f/pwa/app"
 )
 
 type indexLink struct {

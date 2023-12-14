@@ -1,6 +1,6 @@
 package main
 
-import "github.com/omnipunk/pwa/v9/app"
+import "github.com/di4f/pwa/app"
 
 const (
 	installApp = "/app/install"

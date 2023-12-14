@@ -1,23 +1,23 @@
 package ui
 
 import (
-	"github.com/omnipunk/pwa/v9/app"
+	"github.com/di4f/pwa/app"
 	//"log"
 )
 
 type RadioButtonDesc struct {
 	Content app.UI
-	Value string
+	Value   string
 }
 
 type RadioButtonCompo struct {
 	app.Compo
-	descs []*RadioButtonDesc
-	value string
+	descs   []*RadioButtonDesc
+	value   string
 	onClick func(app.Context, app.Event)
 }
 
-func (b *RadioButtonCompo)Btn(
+func (b *RadioButtonCompo) Btn(
 	value string,
 	content app.UI,
 ) *RadioButtonCompo {
@@ -25,20 +25,20 @@ func (b *RadioButtonCompo)Btn(
 		b.descs,
 		&RadioButtonDesc{
 			Content: content,
-			Value: value,
+			Value:   value,
 		},
 	)
 
 	return b
 }
 
-func (b *RadioButtonCompo)GetValue(
+func (b *RadioButtonCompo) GetValue(
 	c app.Context,
 ) string {
 	return b.value
 }
 
-func (b *RadioButtonCompo)SetValue(
+func (b *RadioButtonCompo) SetValue(
 	c app.Context,
 	value string,
 ) error {
@@ -63,7 +63,7 @@ func (b *RadioButtonCompo) Render() app.UI {
 
 		btn := app.Button().
 			OnClick(
-				func(c app.Context, e app.Event){
+				func(c app.Context, e app.Event) {
 					b.SetValue(c, desc.Value)
 					if b.onClick != nil {
 						b.onClick(c, e)
@@ -93,4 +93,3 @@ func (b *RadioButtonCompo) OnClick(
 	b.onClick = fn
 	return b
 }
-

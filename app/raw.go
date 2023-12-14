@@ -5,7 +5,7 @@ import (
 	"io"
 	"strings"
 
-	"github.com/omnipunk/pwa/v9/errors"
+	"github.com/di4f/pwa/errors"
 )
 
 // Raw returns a ui element from the given raw value. HTML raw value must have a

@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/omnipunk/pwa/v9/app"
+	"github.com/di4f/pwa/app"
 )
 
 // hello is a component that displays a simple "Hello World!". A component is a

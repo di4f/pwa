@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/omnipunk/pwa/v9/errors"
+	"github.com/di4f/pwa/errors"
 )
 
 // Composer is the interface that describes a customized, independent and

@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/omnipunk/pwa/v9/app"
-	"github.com/omnipunk/pwa/v9/errors"
+	"github.com/di4f/pwa/app"
+	"github.com/di4f/pwa/errors"
 )
 
 func get(ctx app.Context, path string) ([]byte, error) {

@@ -3,7 +3,7 @@ package analytics
 import (
 	"fmt"
 
-	"github.com/omnipunk/pwa/v9/app"
+	"github.com/di4f/pwa/app"
 )
 
 // GoogleAnalyticsHeader returns the header to use in the app.Handler.RawHeader

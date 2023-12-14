@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/omnipunk/pwa/v9/errors"
+	"github.com/di4f/pwa/errors"
 )
 
 type engine struct {

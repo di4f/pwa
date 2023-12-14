@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/omnipunk/pwa/v9/errors"
+	"github.com/di4f/pwa/errors"
 )
 
 func toString(v any) string {

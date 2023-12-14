@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/omnipunk/pwa/v9/app"
+	"github.com/di4f/pwa/app"
 )
 
 // IIcon is the interface that describes an icon.

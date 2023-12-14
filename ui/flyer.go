@@ -4,8 +4,8 @@ import (
 	"fmt"
 
 	"github.com/google/uuid"
-	"github.com/omnipunk/pwa/v9/app"
-	"github.com/omnipunk/pwa/v9/errors"
+	"github.com/di4f/pwa/app"
+	"github.com/di4f/pwa/errors"
 )
 
 // IFlyer is the interface that describes a base with ad spaces surrounded by
