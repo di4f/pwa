@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/di4f/pwa/app"
-	"github.com/di4f/pwa/ui"
+	//"github.com/di4f/pwa/ui"
 	"net/http"
 	//"log"
 )
@@ -12,7 +12,8 @@ type RootCompo struct {
 	children []app.UI
 }
 
-func Root(children ...app.UI) *RootCompo {
+// Create the new root component that is on top of the rest.
+func FromRoot(children ...app.UI) *RootCompo {
 	ret := &RootCompo{
 		children: children,
 	}
@@ -21,13 +22,13 @@ func Root(children ...app.UI) *RootCompo {
 
 func (r *RootCompo) Render() app.UI {
 	return app.Div().ID("root").Body(
-		app.Header().Text("Hello, World!"),
+		app.Header().Text("The example PWA application"),
 		app.Nav().Body(
-			app.Button().Text("Subs").OnClick(func(c app.Context, e app.Event) {
-				c.Navigate("/test1/")
+			app.Button().Text("Calculator").OnClick(func(c app.Context, e app.Event) {
+				c.Navigate("/calc/")
 			}),
-			app.Button().Text("Root/Hello").OnClick(func(c app.Context, e app.Event) {
-				c.Navigate("/")
+			app.Button().Text("Note list").OnClick(func(c app.Context, e app.Event) {
+				c.Navigate("/note-list/")
 			}),
 		),
 		app.Range(r.children).Slice(func(i int) app.UI {
@@ -36,24 +37,15 @@ func (r *RootCompo) Render() app.UI {
 	)
 }
 
-type RootSub struct {
+type RootPage struct {
 	app.Compo
-	Parent *ui.NavCompo
 }
 
-func (rs *RootSub) Render() app.UI {
-	return Root(
-		app.Div().Text("The sub text"),
+func (page *RootPage) Render() app.UI {
+	ret := app.Main().Body(
+		app.H2().Text("This is the root page, click something to move between them"),
 	)
-}
-
-type Text struct {
-	app.Compo
-	Text string
-}
-
-func (t *Text) Render() app.UI {
-	return nil
+	return FromRoot(ret)
 }
 
 type hello struct {
@@ -67,18 +59,18 @@ func (h *hello) Render() app.UI {
 			c.Navigate("/hello/")
 		}),
 	)
-	return Root(ret)
+	return FromRoot(ret)
 }
 
 func main() {
-	app.Route("/", &hello{})
-	app.Route("/hello/", &hello{})
-	app.Route("/test1/", &RootSub{})
+	app.Route("/", &RootPage{})
+	app.Route("/calc/", &CalcPage{})
+	app.Route("/note-list/", &NoteListPage{})
 	app.RunWhenOnBrowser()
 
 	http.Handle("/", &app.Handler{
-		Name:        "Hello",
-		Description: "The 'Hello, World' example",
+		Name:        "The testing PWA application",
+		Description: "The testing PWA application example",
 		Styles: []string{
 			"/web/hello.css",
 		},
